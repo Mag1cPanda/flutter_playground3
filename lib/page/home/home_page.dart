@@ -3,8 +3,7 @@ import 'package:flutter_playground3/page/other/not_found_page.dart';
 
 import 'package:get/get.dart';
 
-
-
+import 'grid_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -25,6 +24,7 @@ class _HomePageState extends State<HomePage> {
     'Loading': const NotFoundPage(),
     'ExpandList': const NotFoundPage(),
     'Picker': const NotFoundPage(),
+    'Grid': const GridPage(),
   };
   late ScrollController _controller;
 

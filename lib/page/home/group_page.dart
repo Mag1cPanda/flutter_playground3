@@ -7,7 +7,10 @@ import 'package:nine_grid_view/nine_grid_view.dart';
 import 'grid_detail.dart';
 import 'card_page.dart';
 import 'package:flutter_playground3/common/custom_route.dart';
+import 'package:flutter_playground3/common/constant.dart';
 // import '../../common/custom_route.dart';
+
+
 
 class GroupPage extends StatelessWidget {
   const GroupPage({Key? key}) : super(key: key);
@@ -33,16 +36,32 @@ class GroupPage extends StatelessWidget {
     return colorPairs[index];
   }
 
-  Widget _buildGroup(BuildContext ctx) {
+  Widget _buildGroup(BuildContext ctx, PhotoType type) {
     final ratio = window.devicePixelRatio;
     final width = window.physicalSize.width / ratio;
-    final size = (width - 30) / 3;
+    final size = (width - 30) / 2;
 
     List<Color> pair = _getColorPair();
-    List imageList = ['a1', 'a2', 'a4', 'a6', 'a7'];
+    List imageList = [];
+    String category = '';
+    if (type == PhotoType.forest) {
+      imageList = ['a1', 'a2', 'a4', 'a6', 'a7'];
+      category = 'forest';
+    } else if (type == PhotoType.modern) {
+      imageList = ['b1', 'b2', 'b3', 'b9', 'b11'];
+      category = 'modern';
+    } else if (type == PhotoType.tradition) {
+      imageList = ['d1', 'd6', 'd7', 'd9', 'd14'];
+      category = 'tradition';
+    } else if (type == PhotoType.western) {
+      imageList = ['c1', 'c3', 'c4', 'c6', 'c7'];
+      category = 'western';
+    }
+
     return GestureDetector(
         onTap: () {
-          Navigator.push(ctx, CustomRoute(const CardPage()));
+          // Navigator.push(ctx, CustomRoute(CardPage(type: type)));
+          Get.to(() => CardPage(type: type, title: category,));
           // print(width);
         },
         child: NineGridView(
@@ -56,13 +75,13 @@ class GroupPage extends StatelessWidget {
                 colors: pair),
             borderRadius: BorderRadius.circular(5),
           ),
-          padding: const EdgeInsets.all(5),
-          space: 5,
+          padding: const EdgeInsets.all(10),
+          space: 10,
           type: NineGridType.qqGp,
           //NineGridType.weChatGp, NineGridType.dingTalkGp
           itemCount: imageList.length,
           itemBuilder: (BuildContext context, int index) {
-            String imagePath = "assets/images/${imageList[index]}.jpg";
+            String imagePath = "assets/images/$category/${imageList[index]}.jpg";
             return Image.asset(
               imagePath,
               fit: BoxFit.cover,
@@ -76,7 +95,9 @@ class GroupPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("路由没有找到"),
+        centerTitle: true,
+        backgroundColor: const Color(0xFFF25555),
+        title: const Text("P·Z"),
       ),
       body: Container(
         padding: const EdgeInsets.all(10),
@@ -84,11 +105,10 @@ class GroupPage extends StatelessWidget {
           spacing: 5,
           runSpacing: 5,
           children: [
-            _buildGroup(context),
-            _buildGroup(context),
-            _buildGroup(context),
-            _buildGroup(context),
-            _buildGroup(context)
+            _buildGroup(context, PhotoType.forest),
+            _buildGroup(context, PhotoType.modern),
+            _buildGroup(context, PhotoType.tradition),
+            _buildGroup(context, PhotoType.western),
           ],
         ),
       ),

@@ -6,19 +6,27 @@ class GridDetail extends StatelessWidget {
 
   final String imagePath;
 
+  Widget _buildPhoto() {
+    return PhotoView.customChild(
+        enableRotation: true,
+        backgroundDecoration: const BoxDecoration(color: Colors.white),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Image.asset(
+            imagePath,
+            fit: BoxFit.fitWidth,
+          ),
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("P&Z"),
-      ),
-      body: PhotoView(
-        backgroundDecoration: const BoxDecoration(
-            color: Colors.white
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: const Color(0xFFF25555),
+          title: const Text("P·Z"),
         ),
-        imageProvider: AssetImage(imagePath),
-      ),
-    );
+        body: _buildPhoto());
   }
-
 }

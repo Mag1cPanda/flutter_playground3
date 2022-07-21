@@ -20,3 +20,10 @@ class Constant {
   static const String locale = 'locale';
 
 }
+
+enum PhotoType{
+  forest,
+  modern,
+  tradition,
+  western
+}

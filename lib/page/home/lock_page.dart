@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground3/page/home/group_page.dart';
+import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 
 class LockPage extends StatelessWidget {
@@ -46,8 +48,11 @@ class LockPage extends StatelessWidget {
         fit: StackFit.expand,
         children: <Widget>[
           Image.asset(
-            // 'assets/images/index60.jpg',
-            'assets/images/background.jpeg',
+            // 'assets/images/modern/b43.jpg',
+            // 'assets/images/tradition/d20.jpg',
+            // 'assets/images/western/c40.jpg',
+            // 'assets/images/background.jpeg',
+            'assets/images/lock_image.jpg',
             fit: BoxFit.cover,
           ),
           Positioned(
@@ -95,6 +100,7 @@ class LockPage extends StatelessWidget {
                   print('onPanEnd');
                   // print(e);
                   // print(e.primaryVelocity);
+                  Get.offAll(const GroupPage());
                 },
                 onPanCancel: () {
                   print('onPanCancel');

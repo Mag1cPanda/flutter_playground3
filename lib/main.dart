@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           ),
 
           // builder: EasyLoading.init(),
-          home: const CardPage(),
+          home: const LockPage(),
         )
     );
   }

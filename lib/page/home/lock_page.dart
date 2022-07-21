@@ -1,45 +1,82 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_playground3/page/home/group_page.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 
-class LockPage extends StatelessWidget {
+class LockPage extends StatefulWidget {
   const LockPage({Key? key}) : super(key: key);
 
+  @override
+  State<StatefulWidget> createState() {
+    return _LockPageState();
+  }
+}
 
+class _LockPageState extends State<LockPage> {
+  final List<String> days = <String>[
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday'
+  ];
+  final List<String> months = <String>[
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
+  int hour = 0;
+  int minute = 0;
+  int day = 0;
+  int month = 0;
+  int dayInMonth = 0;
+  late Timer _timer;
+
+  void _refreshTime() {
+    final DateTime time = DateTime.now();
+    hour = time.hour;
+    minute = time.minute;
+    day = time.weekday;
+    month = time.month;
+    dayInMonth = time.day;
+  }
+
+  @override
+  void initState() {
+    _refreshTime();
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      _refreshTime();
+      setState(() {
+
+      });
+    });
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    ///取消计时器
+    _timer.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final List<String> days = <String>[
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-      'Sunday'
-    ];
-    final List<String> months = <String>[
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-
-    final DateTime time = DateTime.now();
-    final int hour = time.hour;
-    final int minute = time.minute;
-    final int day = time.weekday;
-    final int month = time.month;
-    final int dayInMonth = time.day;
     return Scaffold(
       // appBar: AppBar(
       //   title: const Text('Slide To Unlock'),
@@ -135,11 +172,9 @@ class LockPage extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
-          )
+              ))
         ],
       ),
     );
   }
-
 }

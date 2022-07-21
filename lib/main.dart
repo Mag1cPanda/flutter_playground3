@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
+import 'package:flutter/services.dart';
 import 'package:flutter_playground3/page/home/home_page.dart';
 
 import 'package:get/get.dart';
@@ -12,7 +13,13 @@ import 'package:flutter_playground3/page/home/lock_page.dart';
 import 'package:flutter_playground3/page/home/group_page.dart';
 import 'package:flutter_playground3/page/home/card_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+    ]
+  );
   runApp(const MyApp());
 }
 

@@ -28,16 +28,16 @@ class _CardPageState extends State<CardPage> {
   @override
   void initState() {
     if (widget.type == PhotoType.forest) {
-      imageList = ['a1', 'a2', 'a4', 'a6', 'a7'];
+      imageList = ['a1', 'a2', 'a4', 'a6', 'a7', 'a10', 'a11', 'a14', 'a15', 'a17', 'a19', 'a22', 'a25', 'a33', 'a38', 'a39', 'a44', 'a51'];
       category = 'forest';
     } else if (widget.type == PhotoType.modern) {
-      imageList = ['b1', 'b2', 'b3', 'b9', 'b11'];
+      imageList = ['b1', 'b2', 'b3', 'b9', 'b11', 'b15', 'b18', 'b20', 'b22', 'b23', 'b23', 'b24', 'b25', 'b29', 'b32', 'b34', 'b37', 'b42', 'b43', 'b45', 'b48', 'b101',];
       category = 'modern';
     } else if (widget.type == PhotoType.tradition) {
-      imageList = ['d1', 'd6', 'd7', 'd9', 'd14'];
+      imageList = ['d1', 'd6', 'd7', 'd9', 'd14', 'd15', 'd17', 'd20', 'd31', 'd32', 'd35', 'd37', 'd40', 'd41', 'd45', 'd221',];
       category = 'tradition';
     } else if (widget.type == PhotoType.western) {
-      imageList = ['c1', 'c3', 'c4', 'c6', 'c7'];
+      imageList = ['c1', 'c3', 'c4', 'c6', 'c7', 'c9', 'c11', 'c16', 'c19', 'c20', 'c26', 'c28', 'c30', 'c37', 'c40', 'c44', 'c45', 'c46', 'c47', 'c48', 'c49', 'c271', 'f4', 'f6', 'f8',];
       category = 'western';
     }
 
